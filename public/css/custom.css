@@ -15,3 +15,12 @@ a {
     margin: auto;
     width: 50%;
 }
+
+#submitButton {
+    margin-left: 1%;
+}
+
+.welcome {
+    margin: auto;
+    width: 50%;
+}

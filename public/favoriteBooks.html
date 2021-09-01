@@ -36,5 +36,91 @@
     </header>
 
     <h1>Favorite Books!</h1>
+
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Year Published</th>
+            <th scope="col">Publisher</th>
+            <th scope="col">Page Count</th>
+            <th scope="col">MSRP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Water for Elephants</td>
+            <td>Sara Gruen</td>
+            <td>2006</td>
+            <td>Algonquin Books</td>
+            <td>335</td>
+            <td>$12.99</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>IT</td>
+            <td>Stephen King</td>
+            <td>1986</td>
+            <td>Viking</td>
+            <td>1,138</td>
+            <td>$17.99</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Recursion</td>
+            <td>Blake Crouch</td>
+            <td>2019</td>
+            <td>Random House Publishing Group</td>
+            <td>336</td>
+            <td>$9.99</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>The Power</td>
+            <td>Naomi Alderman</td>
+            <td>2016</td>
+            <td>Viking</td>
+            <td>400</td>
+            <td>$9.99</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <form>
+        <div class="form-group col-md-8">
+          <label for="inputEmail4">Title</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Title">
+        </div>
+        <div class="form-group col-md-8">
+          <label for="inputPassword4">Author</label>
+          <input type="password" class="form-control" id="inputPassword4" placeholder="Author">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputAddress">Year Published</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="Year Published">
+        </div>
+        <div class="form-group col-md-8">
+          <label for="inputAddress2">Publisher</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Publisher">
+        </div>
+        <div class="form-row col-md-8">
+          <div class="form-group col-md-4">
+            <label for="inputCity">Page Count</label>
+            <input type="text" class="form-control" id="inputCity" placeholder="Page Count">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">MSRP</label>
+            <input type="text" class="form-control" id="inputState" placeholder="MSRP">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
