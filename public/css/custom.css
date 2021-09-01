@@ -8,5 +8,10 @@ body {
 }
 
 a {
-    color: green;
+    color: yellow;
+}
+
+.personalInfo {
+    margin: auto;
+    width: 50%;
 }
