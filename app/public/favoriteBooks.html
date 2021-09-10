@@ -40,7 +40,7 @@
 
     <!-- Table with 7 columns and 4 rows-->
     <div>
-      <table class="table">
+      <table class="table" id="sortableTable">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -125,5 +125,10 @@
         <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
       </form>
     </div>
+    <script src="js/tablesort.min.js"></script>
+    <!-- Tablesort from plugin https://github.com/tristen/tablesort -->
+    <script>
+      new Tablesort(document.getElementById('sortableTable'));
+    </script>
   </body>
 </html>
