@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/custom.css">
 
     <title>Favorite Books Page</title>
+    <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
     <header>
@@ -125,7 +126,22 @@
         <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
       </form>
     </div>
+
+    <!-- <div id="counter">
+      <p>Hello</p>
+      <p>{{ 2 + 4 + 9 }}</p>
+      <p>{{ person.name.first }}</p>
+      <p><a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></p>
+      <p>{{ dummy }}</p>
+      <p>{{ total }}</p>
+      <p>{{ list }}</p>
+      <ul>
+        <li v-for="item in list">{{ item }}</li>
+      </ul>
+    </div> -->
+
     <script src="js/tablesort.min.js"></script>
+    <script src="js/index.js"></script>
     <!-- Tablesort from plugin https://github.com/tristen/tablesort -->
     <script>
       new Tablesort(document.getElementById('sortableTable'));
