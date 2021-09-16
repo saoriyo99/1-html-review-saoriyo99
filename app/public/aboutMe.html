@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/custom.css">
 
     <title>About Me Page</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
   </head>
   <body>
     <header>
@@ -37,14 +39,15 @@
     </header>
 
     <!-- Block of personal information-->
-    <div class="personalInfo">
+    <div class="personalInfo" id="uniquePerson">
       <h1>About Me!</h1>
-      <h2>My name is Tonya Hill</h2>
-      <a href="img/fakePic.jpg"><img src="img/fakePic.jpg" class="rounded mx-auto d-block" alt="Girl Profile Pic"></a>
+      <h2>My name is {{ person.name.first }} {{ person.name.last }} </h2>
+      <a v-bind:href="person.picture.large"><img v-bind:src="person.picture.thumbnail" class="rounded mx-auto d-block" alt="Girl Profile Pic"></a>
       <p>Source for image: https://randomuser.me/</p>
-      <p>I'm 28, born on April 16th, and am from Arizona.</p>
-      <p>Contact me at <a href="mailto:tonyahill@email.com">tonyahill@email.com</a></p>
+      <p>I'm {{ person.dob.age }}, born on {{ person.dob.date }}, and am from {{ person.location.state }}.</p>
+      <p>Contact me at <a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></p>
     </div>
     
+    <script src="js/aboutMe.js"></script>
   </body>
 </html>
