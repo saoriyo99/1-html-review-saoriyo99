@@ -12,6 +12,7 @@
     <title>About Me Page</title>
 
     <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
   </head>
   <body>
     <header>
@@ -39,7 +40,7 @@
     </header>
 
     <!-- Block of personal information-->
-    <div class="personalInfo" id="uniquePerson">
+    <div class="personalInfo" id="uniquePerson" v-if="person">
       <h1>About Me!</h1>
       <h2>My name is {{ person.name.first }} {{ person.name.last }} </h2>
       <a v-bind:href="person.picture.large"><img v-bind:src="person.picture.thumbnail" class="rounded mx-auto d-block" alt="Girl Profile Pic"></a>
@@ -52,6 +53,6 @@
     </div>
     
     <script src="js/aboutMe.js"></script>
-    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    
   </body>
 </html>

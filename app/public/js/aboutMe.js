@@ -1,8 +1,12 @@
 const RandomPerson = {
     data() {
         return {
-            "person":{
-                name: {}
+            "person": {
+                name: {},
+                dob: {},
+                picture: {},
+                location: {},
+                email: {}
             }
         }
     },
