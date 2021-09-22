@@ -1,7 +1,9 @@
 const RandomPerson = {
     data() {
         return {
-            "person":{}
+            "person":{
+                name: {}
+            }
         }
     },
     computed: {
