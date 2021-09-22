@@ -44,10 +44,14 @@
       <h2>My name is {{ person.name.first }} {{ person.name.last }} </h2>
       <a v-bind:href="person.picture.large"><img v-bind:src="person.picture.thumbnail" class="rounded mx-auto d-block" alt="Girl Profile Pic"></a>
       <p>Source for image: https://randomuser.me/</p>
-      <p>I'm {{ person.dob.age }}, born on {{ person.dob.date }}, and am from {{ person.location.country }}.</p>
+      <p>I'm {{ person.dob.age }}, born on {{ prettyBirthday }}, and am from {{ person.location.country }}.</p>
       <p>Contact me at <a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></p>
+      <form v-on:submit.prevent="fetchUserData">
+        <button type="submit">Reload</button>
+      </form>
     </div>
     
     <script src="js/aboutMe.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
   </body>
 </html>
