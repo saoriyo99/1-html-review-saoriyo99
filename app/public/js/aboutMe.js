@@ -1,13 +1,9 @@
 const RandomPerson = {
     data() {
         return {
-            "person": {
-                name: {},
-                dob: {},
-                picture: {},
-                location: {},
-                email: {}
-            }
+            "students": [],
+            "offers": [],
+            "selectedStudent": null
         }
     },
     computed: {
@@ -17,15 +13,46 @@ const RandomPerson = {
         }
     },
     methods: {
-        fetchUserData() {
+        prettyDollar(n) {
+            const d = new Intl.NumberFormat("en-US").format(n);
+            return "$ " + d;
+        },
+        selectStudent(s) {
+            // Don't fetch same student multiple times
+            if (s == this.selectedStudent) {
+                return;
+            }
+            // Set student
+            this.selectedStudent = s;
+            // Clear out offers array
+            this.offers = [];
+            // Get offers from student
+            this.fetchOfferData(this.selectedStudent);
+        },
+        fetchStudentData() {
             // creates a response
-            fetch('https://randomuser.me/api/')
+            fetch('/api/student/')
             // handles the promise
             // parameter response, returns response.json
             .then(response => response.json())
             .then((parsedJSON) => {
                 console.log(parsedJSON);
-                this.person = parsedJSON.results[0];
+                this.students = parsedJSON;
+            })
+            .catch(err => {
+                console.error(err)
+            })
+        },
+        fetchOfferData(s) {
+            console.log("Fetching offers for", s);
+            // creates a response
+            fetch('/api/offer/?student=' + s.id)
+            // handles the promise
+            // parameter response, returns response.json
+            .then(response => response.json())
+            .then((parsedJSON) => {
+                console.log(parsedJSON);
+                this.offers = parsedJSON;
             })
             .catch(err => {
                 console.error(err)
@@ -33,7 +60,7 @@ const RandomPerson = {
         }
     },
     created() {
-        this.fetchUserData();
+        this.fetchStudentData();
     }
 }
 
