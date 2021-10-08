@@ -41,3 +41,22 @@ INSERT INTO offer(id, studentId, companyName, salary, bonus, offerDate) VALUES
 
 -- CREATE USER 'msisreader'@'%' IDENTIFIED BY 'msisreadonly';
 -- GRANT SELECT ON * . * TO 'msisreader'@'%';
+
+-- Book data
+DROP TABLE IF EXISTS book;
+CREATE TABLE book (
+	id int PRIMARY KEY AUTO_INCREMENT ,
+    title varchar(48) NOT NULL,
+    author varchar(48) NOT NULL, 
+    yearPublished int NOT NULL DEFAULT 0, 
+    publisher varchar(48) NOT NULL,
+    pages int NOT NULL DEFAULT 0,
+    MSRP int NOT NULL DEFAULT 0
+);
+
+INSERT INTO book(id, title, author, yearPublished, publisher, pages, MSRP) VALUES 
+    (1, 'Water for Elephants', 'Sara Gruen', 2006, 'Algonquin Books', 335, 12.99),
+    (2, 'IT', 'Stephen King', 1986, 'Viking', 1138, 17.99),
+    (3, 'Recursion', 'Blake Crouch', 2019, 'Random House Publishing Group', 336, 9.99),
+    (4, 'The Power', 'Naomi Alderman', 2016, 'Viking', 400, 9.99)
+;

@@ -3,7 +3,14 @@ const RandomPerson = {
         return {
             "students": [],
             "offers": [],
-            "selectedStudent": null
+            "selectedStudent": null,
+            "person": {
+                name: {},
+                dob: {},
+                picture: {},
+                location: {},
+                email: {}
+            }
         }
     },
     computed: {
@@ -57,10 +64,24 @@ const RandomPerson = {
             .catch(err => {
                 console.error(err)
             })
+        },
+        fetchUserData() {
+            // creates a response
+            fetch('https://randomuser.me/api/')
+            // handles the promise
+            // parameter response, returns response.json
+            .then(response => response.json())
+            .then((parsedJSON) => {
+                console.log(parsedJSON);
+                this.person = parsedJSON.results[0];
+            })
+            .catch(err => {
+                console.error(err)
+            })
         }
     },
     created() {
-        this.fetchStudentData();
+        this.fetchUserData();
     }
 }
 
