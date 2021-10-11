@@ -10,7 +10,8 @@ const RandomPerson = {
                 picture: {},
                 location: {},
                 email: {}
-            }
+            },
+            offerForm: {}
         }
     },
     computed: {
@@ -39,7 +40,7 @@ const RandomPerson = {
         fetchStudentData() {
             // creates a response
             fetch('/api/student/')
-            // handles the promise
+            // handles the promise, either completes or it doesn't
             // parameter response, returns response.json
             .then(response => response.json())
             .then((parsedJSON) => {
@@ -78,10 +79,29 @@ const RandomPerson = {
             .catch(err => {
                 console.error(err)
             })
+        },
+        postNewOffer(evt) {
+            this.offerForm.studentId = this.selectedStudent.id;
+            console.log("Positing", this.offerForm);
+
+            fetch('api/offer/create.php', {
+                method: 'POST',
+                body: JSON.stringify(this.offerForm),
+                headers: {
+                    "Content-Type": "application/json; charset-utf-8"
+                }
+            })
+            .then( response => response.json())
+            .then( json => {
+                console.log("Returned from post:", json);
+                this.offers = json;
+                this.offerForm = {}
+            })
         }
     },
     created() {
-        this.fetchUserData();
+        // this.fetchUserData();
+        this.fetchStudentData();
     }
 }
 
