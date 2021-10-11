@@ -64,35 +64,34 @@
           </tr>
       </tbody>
       </table>
-    </div>
 
     <!-- A form to input new rows for the table. Does not do anything yet.-->
-    <div>
-      <form>
+ 
+      <form v-on:submit.prevent="postNewBook">
         <div class="form-group col-md-8">
           <label for="inputEmail4">Title</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Title">
+          <input type="text" v-model="bookForm.title" class="form-control" id="inputEmail4" placeholder="Title">
         </div>
         <div class="form-group col-md-8">
           <label for="inputPassword4">Author</label>
-          <input type="password" class="form-control" id="inputPassword4" placeholder="Author">
+          <input type="text" v-model="bookForm.author" class="form-control" id="inputPassword4" placeholder="Author">
         </div>
         <div class="form-group col-md-4">
           <label for="inputAddress">Year Published</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Year Published">
+          <input type="number" v-model="bookForm.yearPublished" class="form-control" id="inputAddress" placeholder="Year Published">
         </div>
         <div class="form-group col-md-8">
           <label for="inputAddress2">Publisher</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Publisher">
+          <input type="text" v-model="bookForm.publisher" class="form-control" id="inputAddress2" placeholder="Publisher">
         </div>
         <div class="form-row col-md-8">
           <div class="form-group col-md-4">
             <label for="inputCity">Page Count</label>
-            <input type="text" class="form-control" id="inputCity" placeholder="Page Count">
+            <input type="number" v-model="bookForm.pages" class="form-control" id="inputCity" placeholder="Page Count">
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">MSRP</label>
-            <input type="text" class="form-control" id="inputState" placeholder="MSRP">
+            <input type="number" v-model="bookForm.MSRP" class="form-control" id="inputState" placeholder="MSRP">
           </div>
         </div>
         <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>

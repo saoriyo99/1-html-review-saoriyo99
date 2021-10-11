@@ -5,13 +5,13 @@ const RandomPerson = {
             "offers": [],
             "selectedStudent": null,
             "person": {
-                name: {},
-                dob: {},
-                picture: {},
-                location: {},
-                email: {}
+                "name": {},
+                "dob": {},
+                "picture": {},
+                "location": {},
+                "email": {}
             },
-            offerForm: {}
+            "offerForm": {}
         }
     },
     computed: {
