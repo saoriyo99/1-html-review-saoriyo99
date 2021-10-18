@@ -42,6 +42,9 @@ const Book = {
                 this.books = json;
                 this.bookForm = {}
             })
+        },
+        postBook(evt) {
+            
         }
     },
     created() {

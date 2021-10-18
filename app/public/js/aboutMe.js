@@ -143,6 +143,7 @@ const RandomPerson = {
             .then( response => response.json())
             .then( json => {
                 console.log("Returned from post:", json);
+                this.offers = json;
                 this.handleResetEdit();
             })
         },
