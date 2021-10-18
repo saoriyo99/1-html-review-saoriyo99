@@ -4,6 +4,7 @@ const RandomPerson = {
             "students": [],
             "offers": [],
             "selectedStudent": null,
+            "selectedOffer": null,
             "person": {
                 "name": {},
                 "dob": {},
@@ -95,8 +96,70 @@ const RandomPerson = {
             .then( json => {
                 console.log("Returned from post:", json);
                 this.offers = json;
-                this.offerForm = {}
+                this.handleResetEdit();
             })
+        },
+        postOffer(evt) {
+            //Check if in edit mode or creating a new offer
+            if (this.selectedOffer) {
+                this.postEditOffer(evt);
+            } else {
+                this.postNewOffer(evt);
+            }
+        },
+        postEditOffer(evt) {
+            this.offerForm.id = this.selectedOffer.id;
+            this.offerForm.studentId = this.selectedStudent.id;
+            console.log("Positing", this.offerForm);
+
+            fetch('api/offer/update.php', {
+                method: 'POST',
+                body: JSON.stringify(this.offerForm),
+                headers: {
+                    "Content-Type": "application/json; charset-utf-8"
+                }
+            })
+            .then( response => response.json())
+            .then( json => {
+                console.log("Returned from post:", json);
+                //Save results
+                this.offers = json;
+                //Reset the form
+                this.handleResetEdit();
+            })
+        },
+        postDeleteOffer() {
+            this.offerForm.id = this.selectedOffer.id;
+            this.offerForm.studentId = this.selectedStudent.id;
+            console.log("Posting", this.offerForm);
+
+            fetch('api/offer/delete.php', {
+                method: 'POST',
+                body: JSON.stringify(this.offerForm),
+                headers: {
+                    "Content-Type": "application/json; charset-utf-8"
+                }
+            })
+            .then( response => response.json())
+            .then( json => {
+                console.log("Returned from post:", json);
+                this.handleResetEdit();
+            })
+        },
+        handleEditOffer(offer) {
+            //Set selectedOffer to offer that was just clicked
+            this.selectedOffer = offer;
+            //Won't immediately update the table, will create object first
+            this.offerForm = Object.assign({}, this.selectedOffer);
+        },
+        handleDeleteOffer(offer) {
+            this.selectedOffer = offer;
+            this.offerForm = Object.assign({}, this.selectedOffer);
+            this.postDeleteOffer();
+        },
+        handleResetEdit() {
+            this.selectedOffer = null;
+            this.offerForm = {};
         }
     },
     created() {
