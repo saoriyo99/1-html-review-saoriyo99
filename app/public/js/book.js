@@ -93,8 +93,7 @@ const Book = {
         },
         handleEditBook(book) {
             this.selectedBook = book;
-            this.bookForm = this.selectedBook;
-            // this.bookForm = Object.assign({}, this.selectedBook);
+            this.bookForm = Object.assign({}, this.selectedBook);
         },
         handleResetEdit() {
             this.selectedBook = null;
