@@ -83,7 +83,7 @@ const RandomPerson = {
         },
         postNewOffer(evt) {
             this.offerForm.studentId = this.selectedStudent.id;
-            console.log("Positing", this.offerForm);
+            console.log("Posting", this.offerForm);
 
             fetch('api/offer/create.php', {
                 method: 'POST',
@@ -110,7 +110,7 @@ const RandomPerson = {
         postEditOffer(evt) {
             this.offerForm.id = this.selectedOffer.id;
             this.offerForm.studentId = this.selectedStudent.id;
-            console.log("Positing", this.offerForm);
+            console.log("Posting", this.offerForm);
 
             fetch('api/offer/update.php', {
                 method: 'POST',
@@ -128,14 +128,17 @@ const RandomPerson = {
                 this.handleResetEdit();
             })
         },
-        postDeleteOffer() {
-            this.offerForm.id = this.selectedOffer.id;
-            this.offerForm.studentId = this.selectedStudent.id;
-            console.log("Posting", this.offerForm);
+        postDeleteOffer(o) {
+            //Security check
+            //Cancel if they don't confirm
+            if (!confirm("Are you sure you want to delete the offer from " + o.companyName + "?")) {
+                return;
+            }
+            console.log("Deleting", o);
 
             fetch('api/offer/delete.php', {
                 method: 'POST',
-                body: JSON.stringify(this.offerForm),
+                body: JSON.stringify(o),
                 headers: {
                     "Content-Type": "application/json; charset-utf-8"
                 }
@@ -152,11 +155,6 @@ const RandomPerson = {
             this.selectedOffer = offer;
             //Won't immediately update the table, will create object first
             this.offerForm = Object.assign({}, this.selectedOffer);
-        },
-        handleDeleteOffer(offer) {
-            this.selectedOffer = offer;
-            this.offerForm = Object.assign({}, this.selectedOffer);
-            this.postDeleteOffer();
         },
         handleResetEdit() {
             this.selectedOffer = null;
