@@ -60,3 +60,12 @@ INSERT INTO book(id, title, author, yearPublished, publisher, pages, MSRP) VALUE
     (3, 'Recursion', 'Blake Crouch', 2019, 'Random House Publishing Group', 336, 9.99),
     (4, 'The Power', 'Naomi Alderman', 2016, 'Viking', 400, 9.99)
 ;
+
+ALTER TABLE offer
+ADD COLUMN status enum("Unanswered", "Accepted", "Declined", "Negotiating")
+NOT NULL DEFAULT 'Unanswered';
+
+SELECT name, username, MAX(salary) AS maxSalary, COUNT(salary) AS offerCount
+FROM student LEFT OUTER JOIN offer ON student.id = offer.studentId
+GROUP BY username, name
+;
